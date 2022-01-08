@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %} User Page {% endblock %}
+
+{% block content %}
+<h3>Welcome {{context['uname']}}!!</h3>
+<h4>{{context['count']}} accounts don't follow you back</h4>
+<form action="" method="post">
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Selection</th>
+                <th scope="col">User ID</th>
+                <th scope="col">Username</th>
+                <th scope="col">Account Status</th>
+                <th scope="col">Profile Pic</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key in context['mean_people'] %}
+            <tr>
+                <td><input type="checkbox" name="unamebox" value={{key[1]}} /></td>
+                <td>{{key[0]}}</td>
+                <td>{{key[1]}}</td>
+                <td>{{key[2]}}</td>
+                <!-- <td>{{key[3]}}</td> -->
+                <td><a href={{key[3]}} target="_blank">{{key[3]}}</a></td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button class="btn btn-primary" type="submit">Unfollow selected</button>
+
+</form>
+
+
+
+<!-- <p>{{context['mean_people']}}</p> -->
+
+
+{% endblock %}
